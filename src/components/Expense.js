@@ -1,6 +1,7 @@
 import React from 'react'
 import "./expense.css"
 import Date from './Date';
+import Card from './Card';
 
 const Expense = (props) => {
     const { data } = props;
@@ -9,7 +10,7 @@ const Expense = (props) => {
     <h1>EXPENSE TRACKER</h1>
     {
         data.map((data)=>(
-            <div className='expense-item'>
+            <Card className='expense-item'>
                 <Date date = {data.date}/>
                 <div className='expense-item__description'>
                 <h2>{data.expense}</h2>
@@ -17,7 +18,7 @@ const Expense = (props) => {
                 <div className='expense-item__price'>{data.cost}</div>
                 </div>
                
-            </div>
+            </Card>
         ))
     }
     </>
