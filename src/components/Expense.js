@@ -1,4 +1,5 @@
 import React from 'react'
+import "./expense.css"
 
 // Expense Items
 
@@ -29,9 +30,13 @@ const Expense = () => {
     <h1>EXPENSE TRACKER</h1>
     {
         data.map((data)=>(
-            <div  style={{display:"flex" , alignItems:"center" , justifyContent : "center"}}>
-                <h1>{data.expense}</h1>
-                <h1>{data.cost}</h1>
+            <div className='expense-item'>
+                <div>28 march</div>
+                <div className='expense-item__description'>
+                <h2>{data.expense}</h2>
+                <div className='expense-item__price'>{data.cost}</div>
+                </div>
+               
             </div>
         ))
     }
