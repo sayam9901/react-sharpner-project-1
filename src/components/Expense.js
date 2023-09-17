@@ -1,30 +1,8 @@
 import React from 'react'
 import "./expense.css"
 
-// Expense Items
-
-// Food Rs 10
-
-// Petrol Rs 100
-
-// Movies Rs 200
-
-const data = [
-    {
-     expense : "food",
-     cost : "rs 10"
-    },
-    {
-        expense : "petrol",
-        cost : "rs 100"
-       },
-       {
-        expense : "Movies",
-        cost : "rs 200"
-       },
-]
-
-const Expense = () => {
+const Expense = (props) => {
+    const { data } = props;
   return (
     <>
     <h1>EXPENSE TRACKER</h1>
