@@ -1,5 +1,6 @@
 import React from 'react'
 import "./expense.css"
+import Date from './Date';
 
 const Expense = (props) => {
     const { data } = props;
@@ -9,9 +10,10 @@ const Expense = (props) => {
     {
         data.map((data)=>(
             <div className='expense-item'>
-                <div>28 march</div>
+                <Date date = {data.date}/>
                 <div className='expense-item__description'>
                 <h2>{data.expense}</h2>
+                <h2>{data.location}</h2>
                 <div className='expense-item__price'>{data.cost}</div>
                 </div>
                
