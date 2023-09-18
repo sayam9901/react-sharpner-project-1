@@ -3,7 +3,6 @@ import "./date.css"
 
 const Date = (props) => {
     const {date} = props
-    console.log(date)
 
     const month = date.getMonth()
     const day = date.getDay()
