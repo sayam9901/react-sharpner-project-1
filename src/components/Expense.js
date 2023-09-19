@@ -2,19 +2,24 @@ import React, { useState } from 'react'
 import "./expense.css"
 import Date from './Date';
 import Addexpense from "./Addexpense"
+import FilterExpense from './FilterExpense';
 // import Card from './Card';
 
 const Expense = (props) => {
     const { data } = props;
 
     const [expense , setExpense] = useState(data)
+    const [filteredyear , setFilteredyear] = useState("2020")
     // const [title , setTitle] = useState(data[0].cost)
 
     const addExpense = (expenseData) =>{
       console.log(expenseData)
       setExpense([...expense , expenseData])
     }
-
+     
+    const FilterChangeHandler = (selectedyear) =>{
+         setFilteredyear(selectedyear)
+    }
     // const delteitem = (index) =>{
     //    const updatedData = [...expense]
     //    updatedData.splice(index,1);
@@ -31,6 +36,7 @@ const Expense = (props) => {
     {
         expense.map((data)=>(
           <div className='card'>
+            <FilterExpense selected = {filteredyear} onChangeFilter = {FilterChangeHandler}/>
             <div key = {data.id} className='expense-item'>
                 <Date date = {data.date}/>
                 <div className='expense-item__description'>

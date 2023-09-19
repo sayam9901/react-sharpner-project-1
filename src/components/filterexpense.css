@@ -1,0 +1,30 @@
+/* styles.css */
+
+/* Styling the label */
+label {
+    font-size: 16px;
+    color: gray;
+    margin-bottom: 5px;
+  }
+  
+  /* Styling the select dropdown */
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: 16px;
+    color: gray;
+  }
+  
+  /* Styling the options */
+  option {
+    font-size: 16px;
+    color: gray;
+  }
+  
+  /* Styling the container div (optional) */
+  div {
+    margin-bottom: 20px;
+  }
+  
