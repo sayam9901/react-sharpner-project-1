@@ -7,8 +7,13 @@ import Addexpense from "./Addexpense"
 const Expense = (props) => {
     const { data } = props;
 
-    // const [expense , setExpense] = useState(data)
+    const [expense , setExpense] = useState(data)
     // const [title , setTitle] = useState(data[0].cost)
+
+    const addExpense = (expenseData) =>{
+      console.log(expenseData)
+      setExpense([...expense , expenseData])
+    }
 
     // const delteitem = (index) =>{
     //    const updatedData = [...expense]
@@ -22,9 +27,9 @@ const Expense = (props) => {
   return (
     <>
     <h1>EXPENSE TRACKER</h1>
-    <Addexpense/>
+    <Addexpense onAddExpense={addExpense}/>
     {
-        data.map((data)=>(
+        expense.map((data)=>(
           <div className='card'>
             <div key = {data.id} className='expense-item'>
                 <Date date = {data.date}/>

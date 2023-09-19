@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import "./addexpense.css";
 
-const Addexpense = () => {
+const Addexpense = ({ onAddExpense }) => {
   const [expenseData, setExpenseData] = useState({
-    expenses: "",
+    expense: "",
     cost: "",
     date: "",
+    location: "",
   });
 
   const handleInputChange = (e) => {
@@ -19,47 +20,65 @@ const Addexpense = () => {
 
   const addDetails = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
-    console.log("Details form submitted");
-    console.log("Expenses: ", expenseData.expenses);
-    console.log("Cost: ", expenseData.cost);
-    console.log("Date: ", expenseData.date);
+    onAddExpense(expenseData);
+    // console.log("Details form submitted");
+    // console.log("Expenses: ", expenseData.expenses);
+    // console.log("Cost: ", expenseData.cost);
+    // console.log("this is the date in add itme module ", expenseData.date);
   };
 
   return (
-    <div>
-      <Form onSubmit={addDetails}>
-        <Form.Group className="mb-3" controlId="expenses">
-          <Form.Label>Expenses</Form.Label>
-          <Form.Control
-            type="text"
-            name="expenses"
-            placeholder="Enter expenses"
-            onChange={handleInputChange}
-            value={expenseData.expenses}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="cost">
-          <Form.Label>Cost in rupees</Form.Label>
-          <Form.Control
-            type="text"
-            name="cost"
-            placeholder="Enter cost"
-            onChange={handleInputChange}
-            value={expenseData.cost}
-          />
-        </Form.Group>
-        <Form.Group controlId="date">
-          <Form.Label>Date</Form.Label>
-          <Form.Control
-            type="date"
-            name="date"
-            placeholder="Date of expense"
-            onChange={handleInputChange}
-            value={expenseData.date}
-          />
-        </Form.Group>
-        <Button type="submit">Submit</Button>
-      </Form>
+    <div className="new-expense">
+      <form onSubmit={addDetails}>
+        <div className="new-expense__controls">
+          <div className="new-expense__controls">
+            <label htmlFor="expenses">Expenses:</label>
+            <input
+              type="text"
+              name="expense"
+              id="expenses"
+              value={expenseData.expenses}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="new-expense__controls">
+            <label htmlFor="cost">Location:</label>
+            <input
+              type="text"
+              name="location"
+              id="location"
+              value={expenseData.location}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="new-expense__controls">
+            <label htmlFor="cost">Cost in rupees:</label>
+            <input
+              type="text"
+              name="cost"
+              id="cost"
+              value={expenseData.cost}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="new-expense__controls">
+            <label htmlFor="date">Date:</label>
+            <input
+              type="date"
+              min="2021-12-1"
+              max="2023-12-31"
+
+              name="date"
+              id="date"
+              value={expenseData.date}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="new-expense__actions">
+          <button type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
     </div>
   );
 };

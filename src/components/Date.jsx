@@ -3,10 +3,11 @@ import "./date.css"
 
 const Date = (props) => {
     const {date} = props
-
-    const month = date.getMonth()
-    const day = date.getDay()
-    const year = date.getFullYear();
+    const dateParts = date.split("-");
+  //  console.log("this is the date in date module",date)
+  const day = dateParts[2];
+const month = dateParts[1];
+const year = dateParts[0];
   return (
     <div className='expense-date'>
         <div className='expense-date__month'>{month}</div>
