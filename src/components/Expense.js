@@ -7,6 +7,8 @@ import FilterExpense from './FilterExpense';
 
 const Expense = (props) => {
     const { data } = props;
+    // const filterpart = filteringyear[0]
+    // console.log(filterpart)
 
     const [expense , setExpense] = useState(data)
     const [filteredyear , setFilteredyear] = useState("2020")
@@ -33,10 +35,11 @@ const Expense = (props) => {
     <>
     <h1>EXPENSE TRACKER</h1>
     <Addexpense onAddExpense={addExpense}/>
+    <FilterExpense selected = {filteredyear} onChangeFilter = {FilterChangeHandler}/>
     {
-        expense.map((data)=>(
+        expense.filter((item) => item.date.split("-")[0] === filteredyear)
+        .map((data)=>(
           <div className='card'>
-            <FilterExpense selected = {filteredyear} onChangeFilter = {FilterChangeHandler}/>
             <div key = {data.id} className='expense-item'>
                 <Date date = {data.date}/>
                 <div className='expense-item__description'>
