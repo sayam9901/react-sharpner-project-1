@@ -3,6 +3,7 @@ import "./expense.css";
 import Date from "./Date";
 import Addexpense from "./Addexpense";
 import FilterExpense from "./FilterExpense";
+import ExpenseChart from "./ExpenseChart";
 // import Card from './Card';
 
 const Expense = (props) => {
@@ -49,6 +50,7 @@ const Expense = (props) => {
       ) : (
         <Addexpense onAddExpense={addExpense} onCancel = {toggleForm} />
       )}
+      <ExpenseChart expenses ={filteredExpense}/>
       <FilterExpense
         selected={filteredyear}
         onChangeFilter={FilterChangeHandler}
