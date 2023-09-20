@@ -12,6 +12,7 @@ const Expense = (props) => {
 
   const [expense, setExpense] = useState(data);
   const [filteredyear, setFilteredyear] = useState("2020");
+  const [showForm, setShowForm] = useState(false);
   // const [title , setTitle] = useState(data[0].cost)
 
   const addExpense = (expenseData) => {
@@ -22,6 +23,10 @@ const Expense = (props) => {
   const FilterChangeHandler = (selectedyear) => {
     setFilteredyear(selectedyear);
   };
+
+  const toggleForm = () =>{
+    setShowForm(false)
+  }
   // const delteitem = (index) =>{
   //    const updatedData = [...expense]
   //    updatedData.splice(index,1);
@@ -37,13 +42,19 @@ const Expense = (props) => {
   return (
     <>
       <h1>EXPENSE TRACKER</h1>
-      <Addexpense onAddExpense={addExpense} />
+      {showForm === false ? (
+        <button className="addexpense" onClick={() => setShowForm(true)}>
+          Add expense
+        </button>
+      ) : (
+        <Addexpense onAddExpense={addExpense} onCancel = {toggleForm} />
+      )}
       <FilterExpense
         selected={filteredyear}
         onChangeFilter={FilterChangeHandler}
       />
       {filteredExpense.length === 0 && <h1>no data found</h1>}
-      
+
       {filteredExpense.length === 1 ? (
         <h1>there is only one data please add more</h1>
       ) : (

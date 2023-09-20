@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import "./addexpense.css";
 
-const Addexpense = ({ onAddExpense }) => {
+const Addexpense = ({ onAddExpense , onCancel }) => {
   const [expenseData, setExpenseData] = useState({
     expense: "",
     cost: "",
@@ -10,6 +10,9 @@ const Addexpense = ({ onAddExpense }) => {
     location: "",
   });
 
+  const handleOnCanel = () =>{
+    onCancel();
+  }
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setExpenseData({
@@ -75,6 +78,7 @@ const Addexpense = ({ onAddExpense }) => {
             />
           </div>
           <div className="new-expense__actions">
+          <button onClick={handleOnCanel}>Cancel</button>
           <button type="submit">Submit</button>
           </div>
         </div>
